@@ -28,7 +28,7 @@ class Snake:
             self.position[1] += 10
 
         # adiciona pedaço do corpo da cabeça na frente da cabeça
-        self.corpo.insert(0, list(self.position))
+        self.body.insert(0, list(self.position))
         # confere se comeu comida
         if self.position == food_position:
             return True
