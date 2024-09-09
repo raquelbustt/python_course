@@ -18,7 +18,23 @@ class Snake:
             self.direction = 'DOWN'
     
     def move(self, food_position):
-        pass
+        if self.direction == 'RIGHT':
+            self.position[0] += 10
+        if self.direction == 'LEFT':
+            self.position[0] -= 10
+        if self.direction == 'UP':
+            self.position[1] -= 10
+        if self.direction == 'DOWN':
+            self.position[1] += 10
+
+        # adiciona pedaço do corpo da cabeça na frente da cabeça
+        self.corpo.insert(0, list(self.position))
+        # confere se comeu comida
+        if self.position == food_position:
+            return True
+        # remove um pedaço da cauda
+        self.body.pop()
+
 
     def check_collision(self):
         pass
