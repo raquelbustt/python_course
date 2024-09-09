@@ -37,8 +37,18 @@ class Snake:
 
 
     def check_collision(self):
-        pass
-    
+        # se dist_esquerda > tam_tela_horizontal ou se a dist_esquerda < 0 = colisão
+        if self.position[0] > (self.screen[0]-10) or self.position[0] < 0:
+            return True
+
+        # se dist_cima > tam_tela_vertical ou se a dist_cima < 0 = colisão
+        if self.position[1] > (self.screen[1]-10) or self.position[1] < 0:
+            return True
+        
+        # checar colisao com o proprio corpo
+        for body_part in self.body[1:]:
+            if self.position == body_part:
+                return True
 
 class Food:
     def __init__(self, screen=(300, 400)):
@@ -47,4 +57,8 @@ class Food:
         self.eaten = False
 
     def new_food(self):
-        pass
+        if self.eaten:
+            self.position = [random.randrange(10, self.screen[0],10), random.randrange(10, self.screen[1], 10)]
+            self.eaten = False
+        return self.position
+        

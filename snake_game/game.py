@@ -2,6 +2,7 @@
 import pygame
 import sys
 from snake_classes import Snake, Food
+import time
 
 pygame.init()
 
@@ -34,8 +35,17 @@ while True:
             if event.key == pygame.K_LEFT:
                 snake.change_direction('LEFT')
     
-    snake.move(food_position)
+    food_position = food.new_food()
+    # se a cobra comeu a comida
+    if snake.move(food_position):
+        # comida devorada = True
+        food.eaten = True
 
+    if snake.check_collision():
+        # print("collided")
+        time.sleep(2)
+        pygame.quit()
+        sys.exit()
 
     # snake draw
     for pos in snake.body:
