@@ -51,7 +51,7 @@ while True:
 
     if snake.check_collision():
         # print("collided")
-        score_surface = my_font.render(f'Pontuação {score}', True, (255,255,255))
+        score_surface = my_font.render(f'SCORE" {score}', True, (255,255,255))
         screen.blit(score_surface, (10,10))
 
         you_lose = my_font.render(f'YOU LOSE!', True, (255,255,255))
@@ -64,7 +64,7 @@ while True:
     # texto pontuacao
     # aqui eu tive erro porque score era um inteiro e ao usar render() eu estava mudando para um objeto e causando erro
     # por isso ajustei score para score_surface
-    score_surface = my_font.render(f'Pontuação {score}', True, (255,255,255))
+    score_surface = my_font.render(f'SCORE: {score}', True, (255,255,255))
     screen.blit(score_surface, (10,10))
 
     # snake draw
